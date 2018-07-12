@@ -5,20 +5,22 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class UserGenerator {
+public class StudentGenerator {
 
-    List<User> users = new ArrayList<>();
+    List<Student> students = new ArrayList<>();
 
-    public UserGenerator() {
+    public StudentGenerator() {
         Random random = new Random();
         for (int i = 0; i < 100; i++) {
-            User.Surname surname = getRandomSurname();
-            User.Name name = getRandomName();
-            users.add(new User(random.nextInt(40) + 10, surname, name));
+            Student.Surname surname = getRandomSurname();
+            Student.Name name = getRandomName();
+            Student.Group group = getRandomGroup();
+            students.add(new Student(random.nextInt(40) + 10, surname, name,group));
         }
     }
 
-    private User.Surname getRandomSurname() {
+
+    private Student.Surname getRandomSurname() {
         Random random = new Random();
         if (random.nextInt(5) == 0) {
             return User.Surname.PETROV;
@@ -39,7 +41,7 @@ public class UserGenerator {
         }
     }
 
-    private User.Name getRandomName() {
+    private Student.Name getRandomName() {
         Random random = new Random();
         if (random.nextInt(5) == 0) {
             return User.Name.GOSHA;
@@ -60,12 +62,31 @@ public class UserGenerator {
         }
     }
 
-    
-
-
-    public void listUsers() {
-        Collections.sort(users);
-        System.out.println("Users : " + users);
+    private Student.Group getRandomGroup() {
+        Random random = new Random();
+        if (random.nextInt(5) == 0) {
+            return Student.Group.C;
+        }
+        if (random.nextInt(5) == 1) {
+            return Student.Group.DESIGN;
+        }
+        if (random.nextInt(5) == 2) {
+            return Student.Group.FRONTEND;
+        }
+        if (random.nextInt(5) == 3) {
+            return Student.Group.JAVA;
+        }
+        if (random.nextInt(5) == 4) {
+            return Student.Group.PYTHON;
+        } else {
+            return Student.Group.QA;
+        }
     }
 
+
+
+    public void listStudents() {
+        Collections.sort(students);
+        System.out.println("Students : " + students);
+    }
 }

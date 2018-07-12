@@ -34,6 +34,10 @@ public class User implements Comparable<User> {
         return surname;
     }
 
+    public Name getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "User{" +
